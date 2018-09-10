@@ -1,0 +1,35 @@
+{
+  "name": "lru-cache",
+  "version": "1.0.0",
+  "description": "LRU Cache Implementation by Node.js",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint-config-daniels": "^1.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "lodash": "^4.17.10"
+  },
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielsss/LRU-Cache.git"
+  },
+  "keywords": [
+    "lru-cache"
+  ],
+  "author": "danielsss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielsss/LRU-Cache/issues"
+  },
+  "homepage": "https://github.com/danielsss/LRU-Cache#readme"
+}

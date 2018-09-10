@@ -1,0 +1,6 @@
+--full-trace
+--bail
+--reporter spec
+--recursive
+-t 0
+test/**/*.test.js

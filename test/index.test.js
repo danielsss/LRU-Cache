@@ -25,4 +25,16 @@ describe('# LRU Cache Test', () => {
     expect(cache.set(null, undefined)).to.equal(false);
   });
 
+  it('should set a cache to lru-cache', () => {
+    expect(cache.set('tester', 'tester')).to.equal(true);
+  });
+
+  it('should get a cache from lru-cache by key `failureKey` failed', () => {
+    expect(cache.get('failure:Key')).to.equal(false);
+  });
+
+  it('should get a cache from lru-cache by key `tester` successful', () => {
+    expect(cache.get('tester')).to.equal('tester');
+  });
 });
+

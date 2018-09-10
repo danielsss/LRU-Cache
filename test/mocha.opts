@@ -3,4 +3,4 @@
 --reporter spec
 --recursive
 -t 0
-test/**/*.test.js
+test/*.test.js

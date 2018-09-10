@@ -5,6 +5,11 @@ node_js:
   - "10"
 env:
   - NODE_ENV="local"
+before_install:
+  - npm i chai --save
+  - npm i eslint-config-daniels --save
+  - npm i mocha --save
+  - npm i nyc --save
 install:
   - npm i
 script:

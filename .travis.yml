@@ -6,7 +6,7 @@ node_js:
 env:
   - NODE_ENV="local"
 before_install:
-  - npm i chai eslint-config-daniels mocha nyc
+  - npm update -q
 install:
   - npm i
 script:

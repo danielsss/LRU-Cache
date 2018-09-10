@@ -8,13 +8,8 @@ LRU Cache Implementation by Node.js
 
 ## Usage
 
-##### `lint`
-```js
-npm run lint
-```
-
-##### `test`
-```js
+* `test`
+```shell
 npm run test
 ```
 

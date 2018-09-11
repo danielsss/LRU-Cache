@@ -20,7 +20,7 @@ const GET_FRONT = Symbol('_get_front');
  */
 class LRUCache {
   /**
-   * @description Initialized constructor
+   * @description Initializer
    * @param {Object} options
    *  - options.capacity - the doubly linked list's limitation
    * @return {void}
@@ -32,15 +32,16 @@ class LRUCache {
   }
 
   /**
-   * @description Initialize head, rear, map and size
+   * @description Initializing head, rear, map and size
+   * @return {void}
    */
   reset() {
     this.hash = new Hash();
     this.map = this.hash.map;
     this.size = 0;
 
-    this[HEAD] = null;
-    this[REAR] = null;
+    this[HEAD] = new Node(null, null);
+    this[REAR] = new Node(null, null);
   }
 
   /**
@@ -81,28 +82,55 @@ class LRUCache {
     }
 
     if (this.isEmpty()) {
-      if (this.capacity <= 0 || this.count >= this.capacity) {
+      if (this.capacity <= 0 || this.size >= this.capacity) {
         debug('this.capacity should not be 0 or list is full');
         return false;
       }
       const node = new Node(key, value);
-      this[HEAD] = node;
-      this[REAR] = node;
-      this[HEAD].next = this[REAR];
-      this[REAR].prev = this[HEAD];
-      debug(this[HEAD] === this[REAR] ? `only have one node for now` : `set cache failed`);
+      this[HEAD].next = node;
+      this[REAR].prev = node;
+      node.next = this[REAR];
+      node.prev = this[HEAD];
+      debug(this[HEAD].next === this[REAR].prev ? `only have one node for now` : `set cache failed`);
+      this.size++;
       this.map.set(key, this[HEAD]);
     } else {
       this[ADD_FRONT](key, value);
     }
-
-
-    this.size++;
     return true;
   }
 
+
   /**
-   * @description detect the doubly linked list's length
+   * @description the lru cache length of doubly linked list
+   * @return {number}
+   */
+  length() {
+    let node = this[HEAD].next;
+    if (node === null) return 0;
+    let len = 0;
+
+    while (true) {
+      if (node.next === null) {
+        break;
+      }
+      len++;
+      node = node.next;
+    }
+    debug(`compute list length: ${len}`);
+    return len;
+  }
+
+  /**
+   * @description detect doubly-linked-list's state
+   * @return {boolean}
+   */
+  isFull() {
+    return this.size >= this.capacity;
+  }
+
+  /**
+   * @description detect the doubly-linked-list's length
    * @return {boolean}
    */
   isEmpty() {
@@ -139,7 +167,8 @@ class LRUCache {
       debug(`get_front -> an invalid key:${key}`);
       return false;
     }
-    return this.map.get(key).value;
+    const list = this.map.get(key);
+    return list.next ? list.next.value : false;
   }
 
   /**
@@ -153,9 +182,30 @@ class LRUCache {
       debug(`add_front -> an invalid key:${key}`);
       return false;
     }
+
+    /*
+    * for now, At least we have one node in doubly-linked-list
+    * */
     const node = new Node(key, value);
     node.prev = this[HEAD];
-    this[HEAD] = node;
+    node.next = this[HEAD].next;
+    this[HEAD].next.prev = node;
+    this[HEAD].next = node;
+
+    /*
+    * The node touched doubly-linked-list capacity
+    * Remove the last node & add front a new node
+    * */
+    if (this.isFull()) {
+      debug('the doubly-linked-list is full, and then the rear will be removed');
+      let _t = this[REAR].prev;
+      this[REAR].prev = _t.prev;
+      _t.prev = null;
+      _t = null;
+      return true;
+    }
+
+    this.size++;
     return true;
   }
 }

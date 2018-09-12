@@ -17,6 +17,15 @@ describe('# LRU Cache Test', () => {
     cache = new LRUCache({capacity: 2});
   });
 
+  it('should return false if not set any cache', () => {
+    expect(cache.get()).to.equal(false);
+  });
+
+  it('should return false if use invalid key', () => {
+    expect(cache.get(null)).to.equal(false);
+    expect(cache.get(undefined)).to.equal(false);
+  });
+
   it('should return false without value', () => {
     expect(cache.set(UNIQUE_KEY, undefined)).to.equal(false);
   });
@@ -26,7 +35,11 @@ describe('# LRU Cache Test', () => {
   });
 
   it('should set a cache to lru-cache', () => {
-    expect(cache.set('tester', 'tester')).to.equal(true);
+    expect(cache.set(UNIQUE_KEY, 'tester')).to.equal(true);
+  });
+
+  it('should set a cache to lru-cache', () => {
+    expect(cache.set(UNIQUE_KEY, 12334)).to.equal(true);
   });
 
   it('should get a cache from lru-cache by key `failureKey` failed', () => {
@@ -34,7 +47,7 @@ describe('# LRU Cache Test', () => {
   });
 
   it('should get a cache from lru-cache by key `tester` successful', () => {
-    expect(cache.get('tester')).to.equal('tester');
+    expect(cache.get(UNIQUE_KEY)).to.equal(12334);
   });
 });
 

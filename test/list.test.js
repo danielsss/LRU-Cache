@@ -31,7 +31,13 @@ describe('# Doubly-linked-List Test', () => {
     expect(c.capacity).to.equal(1000);
   });
 
+  it('will be received an empty array', () => {
+    expect(list.toArray().length).to.equal(0);
+  });
+
   it('reach to capacity and pop from rear', () => {
+    expect(list.get()).to.equal(null);
+
     list.set(UNIQUE_KEY, 123);
     list.set(UNIQUE_KEY, 234);
     list.set(UNIQUE_KEY, 345);
@@ -51,7 +57,7 @@ describe('# Doubly-linked-List Test', () => {
   });
 
   it('reset doubly-linked-list', () => {
-    list.reset();
+    expect(list.reset()).to.equal(true);
   });
 
   it('set with an invalid value', () => {

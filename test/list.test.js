@@ -53,4 +53,9 @@ describe('# Doubly-linked-List Test', () => {
   it('reset doubly-linked-list', () => {
     list.reset();
   });
+
+  it('set with an invalid value', () => {
+    expect(list.set(UNIQUE_KEY, null)).to.equal(false);
+    expect(list.set(UNIQUE_KEY, undefined)).to.equal(false);
+  });
 });

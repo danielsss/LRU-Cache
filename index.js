@@ -88,6 +88,10 @@ class LRUCache {
   isValid(v) {
     return v !== null && v !== undefined;
   }
+
+  // toArray(key) {
+  // TODO: Implementations
+  // }
 }
 
 

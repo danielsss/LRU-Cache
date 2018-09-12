@@ -25,7 +25,7 @@ cache.set('test_key', 234);
 ##### .get
 
 * only the front node will be returned
-* `key` - the map key
+* `key` - the hash map key
 
 ```js
 const value = cache.get('test_key');
@@ -35,8 +35,10 @@ console.info(value === 234); // true
 
 ##### .toArray
 
+* `key` - the hash map key
+
 ```js
-const values = cache.toArray();
+const values = cache.toArray(key);
 console.info(values); // [234, 123]
 ```
 

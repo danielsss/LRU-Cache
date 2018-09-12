@@ -8,31 +8,41 @@ LRU Cache Implementation by Node.js
 
 ## Usage
 
-* `test`
+##### test
+
 ```shell
 npm run test
 ```
 
-* `require`
+##### require
+
 ```js
 const lru = require('LRU-Cache');
 ```
 
-* `set`
+##### set
+
+* `capacity` - the list capacity and 0 is not allowed, default: 1000
+
 ```js
 const cache = new lru({capacity: 100});
 cache.set('test_key', 123);
 cache.set('test_key', 234);
 ```
 
-* `get`
+##### get
+
+* only the front node will be returned
+* `key` - the map key
+
 ```js
 const value = cache.get('test_key');
 console.info(value === 234); // true
 ```
 
 
-* `toArray`
+##### toArray
+
 ```js
 const values = cache.toArray();
 console.info(values); // [234, 123]

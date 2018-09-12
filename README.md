@@ -13,6 +13,24 @@ LRU Cache Implementation by Node.js
 npm run test
 ```
 
+* `require`
+```js
+const lru = require('LRU-Cache');
+```
+
+* `set`
+```js
+const cache = new lru({capacity: 100});
+cache.set('test_key', 123);
+cache.set('test_key', 234);
+```
+
+* `get`
+```js
+const value = cache.get('test_key');
+console.info(value === 234); // true
+```
+
 
 ## Coverage
 

@@ -32,6 +32,12 @@ console.info(value === 234); // true
 ```
 
 
+* `toArray`
+```js
+const values = cache.toArray();
+console.info(values); // [234, 123]
+```
+
 ## Coverage
 
 

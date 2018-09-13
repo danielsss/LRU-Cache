@@ -84,4 +84,13 @@ describe('# Doubly-linked-List Test', () => {
     expect(list.pop()).to.equal(true);
     expect(list.size).to.equal(0);
   });
+
+
+  it('clean all node by clean()', () => {
+    expect(list.clean()).to.equal(false);
+    list.set(UNIQUE_KEY, 1);
+    list.set(UNIQUE_KEY, 2);
+    list.set(UNIQUE_KEY, 3);
+    expect(list.clean()).to.equal(true);
+  });
 });

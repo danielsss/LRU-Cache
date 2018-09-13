@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a9f7ebfd3f1740e2b2474ffc6b715b32)](https://app.codacy.com/app/danielsss/LRU-Cache?utm_source=github.com&utm_medium=referral&utm_content=danielsss/LRU-Cache&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/danielsss/LRU-Cache.svg?branch=master)](https://travis-ci.com/danielsss/LRU-Cache)
 [![Coverage Status](https://coveralls.io/repos/github/danielsss/LRU-Cache/badge.svg?branch=master)](https://coveralls.io/github/danielsss/LRU-Cache?branch=master)
 [![GitHub issues](https://img.shields.io/github/issues/danielsss/LRU-Cache.svg)](https://github.com/danielsss/LRU-Cache/issues)

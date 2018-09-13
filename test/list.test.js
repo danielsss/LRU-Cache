@@ -18,6 +18,10 @@ describe('# Doubly-linked-List Test', () => {
     list = new DoublyList({capacity: 3});
   });
 
+  it('should get 0 of cache hit', () => {
+    expect(list.hit()).to.equal(0);
+  });
+
   it('set cache failed when capacity = 0', () => {
     try {
       new DoublyList({capacity: 0});
@@ -56,12 +60,17 @@ describe('# Doubly-linked-List Test', () => {
     expect(arr).to.includes(234);
   });
 
-  it('reset doubly-linked-list', () => {
-    expect(list.reset()).to.equal(true);
-  });
-
   it('set with an invalid value', () => {
     expect(list.set(UNIQUE_KEY, null)).to.equal(false);
     expect(list.set(UNIQUE_KEY, undefined)).to.equal(false);
+  });
+
+  it('should get hit 0 but at least have one node in it', () => {
+    expect(list.size).to.gte(0);
+    expect(list.hit()).to.gte(0);
+  });
+
+  it('reset doubly-linked-list', () => {
+    expect(list.reset()).to.equal(true);
   });
 });

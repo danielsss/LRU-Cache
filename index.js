@@ -36,15 +36,7 @@ class LRUCache {
    * @return {String | Boolean} value
    */
   get(key) {
-    /* check key*/
-    if (!this.isValid(key)) {
-      debug(`An invalid key:${key}`);
-      return false;
-    }
-    if (!this.map.has(key) || this.isMapEmpty()) {
-      debug(`Not found doubly linked list by key:${key}`);
-      return false;
-    }
+    if (!this.authKey(key)) return false;
 
     const list = this.map.get(key);
     return list.get();
@@ -73,6 +65,37 @@ class LRUCache {
   }
 
   /**
+   * @description get front node times of hit
+   * @param {String} key
+   * @return {Number}
+   */
+  hit(key) {
+    if (!this.authKey(key)) return 0;
+    const list = this.map.get(key);
+    return list.hit();
+  }
+
+  /**
+   * @description Authentication the is valid string
+   * @param {String} key
+   * @return {boolean}
+   */
+  authKey(key) {
+    if (!this.isValid(key)) {
+      debug(`An invalid key:${key}`);
+      return false;
+    }
+
+    if (!this.map.has(key) || this.isMapEmpty()) {
+      debug(`Not found doubly linked list by key:${key}`);
+      return false;
+    }
+
+    return true;
+  }
+
+
+  /**
    * @description detect the map's length
    * @return {boolean}
    */
@@ -88,6 +111,7 @@ class LRUCache {
   isValid(v) {
     return v !== null && v !== undefined;
   }
+
 
   // toArray(key) {
   // TODO: Implementations

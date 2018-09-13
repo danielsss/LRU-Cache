@@ -2,7 +2,7 @@
 
 const mocha = require('mocha');
 const chai = require('chai');
-const LRUCache = require('../');
+const LRUCache = require('../lib/lru.cache');
 
 const expect = chai.expect;
 const describe = mocha.describe;
@@ -62,6 +62,18 @@ describe('# LRU Cache Test', () => {
 
   it('should get hit from cache and size greate than 0', () => {
     expect(cache.hit(UNIQUE_KEY)).to.gte(0);
+  });
+
+  it('should return empty array with an invalid key', () => {
+    expect(cache.toArray(null)).to.be.an('array').that.is.empty;
+  });
+
+  it('should return an array of doubly-linked-list', () => {
+    expect(cache.toArray(UNIQUE_KEY).length).to.equal(2);
+    expect(cache.toArray(UNIQUE_KEY)).to.includes(12334);
+    expect(cache.toArray(UNIQUE_KEY)[0] === 12334).to.equal(true);
+    expect(cache.toArray(UNIQUE_KEY)).to.includes('tester');
+    expect(cache.toArray(UNIQUE_KEY)[1] === 'tester').to.equal(true);
   });
 });
 

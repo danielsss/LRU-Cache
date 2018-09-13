@@ -2,7 +2,7 @@
   "name": "lru-cache",
   "version": "1.0.0",
   "description": "LRU Cache Implementation by Node.js",
-  "main": "index.js",
+  "main": "./lib/lru.cache.js",
   "directories": {
     "lib": "lib"
   },

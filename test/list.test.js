@@ -73,4 +73,15 @@ describe('# Doubly-linked-List Test', () => {
   it('reset doubly-linked-list', () => {
     expect(list.reset()).to.equal(true);
   });
+
+  it('pop values until list to be empty', () => {
+    list.set(UNIQUE_KEY, 1);
+    list.set(UNIQUE_KEY, 2);
+    list.set(UNIQUE_KEY, 3);
+
+    expect(list.pop()).to.equal(true);
+    expect(list.pop()).to.equal(true);
+    expect(list.pop()).to.equal(true);
+    expect(list.size).to.equal(0);
+  });
 });

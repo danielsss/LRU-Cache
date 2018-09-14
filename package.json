@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "nyc mocha",
+    "lint": "eslint .",
     "coveralls": "node ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --colors test/*.test.js",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint . --fix"
+    "codacy-coveralls": "cat ./coverage/lcov.info | codacy-coverage --accountToken MZMuqfNaPkeCJpoDh0B2 --username danielsss --projectName LRU-Cache"
   },
   "devDependencies": {
     "chai": "^4.1.2",

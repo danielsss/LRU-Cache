@@ -2,8 +2,7 @@
 [![Build Status](https://travis-ci.com/danielsss/LRU-Cache.svg?branch=master)](https://travis-ci.com/danielsss/LRU-Cache)
 [![Coverage Status](https://coveralls.io/repos/github/danielsss/LRU-Cache/badge.svg?branch=master)](https://coveralls.io/github/danielsss/LRU-Cache?branch=master)
 [![GitHub issues](https://img.shields.io/github/issues/danielsss/LRU-Cache.svg)](https://github.com/danielsss/LRU-Cache/issues)
-![Depfu](https://img.shields.io/depfu/depfu/example-ruby.svg)
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![Known Vulnerabilities](https://snyk.io/test/github/danielsss/LRU-Cache/badge.svg?targetFile=package.json)](https://snyk.io/test/github/danielsss/LRU-Cache?targetFile=package.json)
 
 # LRU-Cache
 LRU Cache Implementation by Node.js

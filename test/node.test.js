@@ -32,4 +32,23 @@ describe('# Node constructor', () => {
     expect(node.prev).to.equal(null);
     expect(node.hit).to.equal(0);
   });
+
+  it('should destroy itself failed while is a head node', () => {
+    const node = new Node(null, null);
+    node.isHead = true;
+    expect(node.destroy()).to.equal(false);
+  });
+
+  it('should destroy itself failed while is a rear node', () => {
+    const node = new Node(null, null);
+    node.isRear = true;
+    expect(node.destroy()).to.equal(false);
+  });
+
+  it('should destroy itself failed without head & rear node', () => {
+    const node = new Node(null, null);
+    node.isRear = false;
+    node.isHead = false;
+    expect(node.destroy()).to.equal(false);
+  });
 });

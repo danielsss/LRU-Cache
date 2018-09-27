@@ -16,6 +16,7 @@ const lru = require('LRU-Cache');
 ##### .set
 
 * `capacity` - the list capacity and 0 is not allowed, default: 1000
+* `maxAge` - the node will be destroyed by itself in `maxAge` ms
 
 ```js
 const cache = new lru({capacity: 100});

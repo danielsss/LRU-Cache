@@ -22,6 +22,18 @@ const lru = require('LRU-Cache');
 const cache = new lru({capacity: 100});
 cache.set('test_key', 123);
 cache.set('test_key', 234);
+console.info(cache.toArray('test_key').length);
+> 2
+```
+
+* instance `lru` with maxAge
+```js
+/* the node will be destroyed in 1000 ms one by one */
+const cache = new lru({capacity: 100, maxAge: 1000});
+cache.set('test_key', 123);
+cache.set('test_key', 234);
+console.info(cache.toArray('test_key').length);
+> 0
 ```
 
 ##### .get

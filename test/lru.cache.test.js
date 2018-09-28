@@ -11,6 +11,10 @@ const it = mocha.it;
 
 const UNIQUE_KEY = 'lru:cache:unique:key:';
 
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 describe('# LRU Cache Test', () => {
   let cache = null;
   before(() => {
@@ -74,6 +78,23 @@ describe('# LRU Cache Test', () => {
     expect(cache.toArray(UNIQUE_KEY)[0] === 12334).to.equal(true);
     expect(cache.toArray(UNIQUE_KEY)).to.includes('tester');
     expect(cache.toArray(UNIQUE_KEY)[1] === 'tester').to.equal(true);
+  });
+
+  it('should timeout by node itself', async () => {
+    cache = new LRUCache({capacity: 10, maxAge: 1000});
+    expect(cache.set(UNIQUE_KEY, 123)).to.equal(true);
+    expect(cache.set(UNIQUE_KEY, 234)).to.equal(true);
+    expect(cache.set(UNIQUE_KEY, 345)).to.equal(true);
+    expect(cache.set(UNIQUE_KEY, 456)).to.equal(true);
+    await sleep(1000 * 2);
+    expect(cache.toArray(UNIQUE_KEY)).to.be.an('array').that.is.empty;
+  });
+
+  it('should auto correct maxAge to 1000 ms', async () => {
+    cache = new LRUCache({capacity: 10, maxAge: 100});
+    expect(cache.set(UNIQUE_KEY, 123)).to.equal(true);
+    await sleep(1000 * 2);
+    expect(cache.toArray(UNIQUE_KEY)).to.be.an('array').that.is.empty;
   });
 });
 

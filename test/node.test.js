@@ -33,22 +33,19 @@ describe('# Node constructor', () => {
     expect(node.hit).to.equal(0);
   });
 
-  it('should destroy itself failed while is a head node', () => {
+  it('should destroy itself failed without threadhodlds param', () => {
     const node = new Node(null, null);
-    node.isHead = true;
     expect(node.destroy()).to.equal(false);
   });
 
-  it('should destroy itself failed while is a rear node', () => {
+  it('should destroy itself failed when a non-integer as param', () => {
     const node = new Node(null, null);
-    node.isRear = true;
-    expect(node.destroy()).to.equal(false);
+    expect(node.destroy('abc')).to.equal(false);
   });
 
-  it('should destroy itself failed without head & rear node', () => {
+  it('should destroy itself failed when ms <= 0', () => {
     const node = new Node(null, null);
-    node.isRear = false;
-    node.isHead = false;
-    expect(node.destroy()).to.equal(false);
+    expect(node.destroy(-1)).to.equal(false);
+    expect(node.destroy(0)).to.equal(false);
   });
 });

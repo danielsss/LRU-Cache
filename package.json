@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "debug": "^3.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "snyk": "^1.189.0"
   },
   "repository": {

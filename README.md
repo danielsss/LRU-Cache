@@ -5,7 +5,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/danielsss/LRU-Cache/badge.svg?targetFile=package.json)](https://snyk.io/test/github/danielsss/LRU-Cache?targetFile=package.json)
 
 # LRU-Cache
-LRU Cache Implementation by Node.js
+LRU Cache implementions in Node.js
 
 ## Usage
 
